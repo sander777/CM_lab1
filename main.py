@@ -1,32 +1,10 @@
-import numpy as np
-import matplotlib.pyplot as plt
+from trapezoidal_rule import *
+from booles_rule import *
 
 
-def trapezoidal_rule(f, a, b, n):
-    d_x = (b-a)/n
-    intervals = list(np.arange(a, b+d_x, d_x))
-    result = f(intervals.pop(0)) + f(intervals.pop(len(intervals) - 1))
-    for i in range(len(intervals)):
-        result += 2 * f(intervals[i])
-
-    return result * d_x / 2
-
-
-def plot_trapezoidal_rule(f, a, b, n):
-    d_x = (b-a)/n
-    intervals = list(np.arange(a, b + d_x, d_x))
-    X = list(np.arange(a, b, 0.01))
-    Y = list(map(f, X))
-    plt.plot(X, Y, lw=3)
-    plt.plot(intervals, list(map(f, intervals)),
-             '.', markersize=12, color="red")
-    plt.plot(intervals, list(map(f, intervals)), color='red')
-    for i in intervals:
-        plt.plot([i, i], [0, f(i)], color='red')
-    plt.title("Trapezoidal Rule")
-
-
-
-plot_trapezoidal_rule(lambda x: x**2, 0, 4, 4)
+print("Trapezoidal Rule: " + str(trapezoidal_rule(lambda x: x**2, 0, 4, 20)))
+plot_trapezoidal_rule(lambda x: x**2, 0, 4, 20)
 plt.show()
-print(trapezoidal_rule(lambda x: x**2, 0, 4, 10))
+print("Boole's rule: " + str(booles_rule(lambda x: x**2, 0, 4, 34)))
+plot_booles_rule(lambda x: x**2, 0, 4, 20)
+plt.show()
