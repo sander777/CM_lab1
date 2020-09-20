@@ -36,3 +36,4 @@ def plot_booles_rule(f, a, b, n):
         if i != b: plot_booles_origins(f, i, i + d_x)
         plt.plot([i, i], [0, f(i)], color='red')
     plt.title("Boole's Rule")
+    plt.plot([a, b], [0, 0])
